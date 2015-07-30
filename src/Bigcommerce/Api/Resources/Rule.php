@@ -19,18 +19,7 @@ class Rule extends Resource
         'id',
         'product_id',
     );
-
-    public function conditions()
-    {
-        $conditions = Client::getCollection($this->fields->conditions->resource, 'RuleCondition');
-
-        foreach ($conditions as $condition) {
-            $condition->product_id = $this->product_id;
-        }
-
-        return $conditions;
-    }
-
+    
     public function create()
     {
         return Client::createResource('/products/' . $this->fields->product_id . '/rules', $this->getCreateFields());
