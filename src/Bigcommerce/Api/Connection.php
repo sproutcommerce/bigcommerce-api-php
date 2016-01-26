@@ -442,6 +442,7 @@ class Connection
         curl_exec($this->curl);
 
         fclose($handle);
+        curl_setopt($this->curl, CURLOPT_INFILE, fopen("php://stdin","r"));
 
         return $this->handleResponse();
     }
